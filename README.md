@@ -98,7 +98,7 @@ Ambiance visuelle
 
 L’ambiance visuelle du site doit refléter l’univers du cinéma d’horreur :
 
-couleurs sombres (noir, rouge, gris foncé)
+couleurs sombres (noir, bleu, jeune, blanc)
 
 contrastes forts
 
