@@ -1,6 +1,6 @@
 # Films-d-horreur
 
-README — Projet Web : CinéClub 13&3
+README — Projet Web : CinéClub 
 1. Comprendre le projet
 1.1 Quel est le but principal du site ?
 
@@ -107,3 +107,5 @@ images d’affiches de films
 interface simple et immersive
 
 Le design doit rester lisible et facile à naviguer, même avec une atmosphère sombre.
+
+https://www.figma.com/design/ii1H6GSRSMMcv8howDxndT/Untitled?node-id=0-1&t=vtFkNpDLoc0nxZZN-1
