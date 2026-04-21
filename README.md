@@ -1,6 +1,6 @@
 # Films-d-horreur
 
-README — Projet Web : CinéClub 
+README — Projet Web : The Horror Vault
 1. Comprendre le projet
 1.1 Quel est le but principal du site ?
 
