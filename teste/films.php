@@ -1,0 +1,107 @@
+<?php
+session_start();
+if (!isset($_SESSION['is_connected'])) {
+    header('Location: login.php');
+    exit;
+}
+$isAdmin = true;
+?>
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>Tous les films - The Horror Vault</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header>
+  <div class="header-brand">
+    <a href="accueil.php" class="logo-link">
+      <img src="images/The horror vault.svg" alt="Logo The Horror Vault">
+    </a>
+  </div>
+  <nav>
+    <a href="accueil.php">Accueil</a>
+    <a href="films.php">Films</a>
+    <a href="apropos.php">À propos</a>
+    <?php if ($isAdmin): ?>
+      <a href="admin.php">Modifier</a>
+      <a href="admin-dashboard.php">Compte admin</a>
+    <?php endif; ?>
+  </nav>
+</header>
+
+<main>
+  <section class="section-title">
+    <h2>Tout les films</h2>
+    <form class="search-form" action="#" method="get">
+      <label>
+        Rechercher un film...
+        <input type="search" name="q" placeholder="Entrez un titre...">
+      </label>
+    </form>   
+  </section>
+
+  <section class="movie-grid">
+    <article class="movie-card">
+      <a href="scream.php">
+        <img src="scream.jpeg" alt="Affiche Scream">
+        <div class="movie-card-content">
+          <h3>Scream (2022)</h3>
+          <p class="movie-year">2022</p>
+          <p class="movie-summary">Ghostface revient terroriser Woodsboro dans un nouveau chapitre rempli de suspense.</p>
+        </div>
+      </a>
+    </article>
+
+    <article class="movie-card">
+      <a href="scream.php">
+        <img src="scream.jpeg" alt="Affiche Scream">
+        <div class="movie-card-content">
+          <h3>Scream (2022)</h3>
+          <p class="movie-year">2022</p>
+          <p class="movie-summary">Une nouvelle génération de survivants tente de démasquer un assassin masqué.</p>
+        </div>
+      </a>
+    </article>
+
+    <article class="movie-card">
+      <a href="scream.php">
+        <img src="scream.jpeg" alt="Affiche Scream">
+        <div class="movie-card-content">
+          <h3>Scream (2022)</h3>
+          <p class="movie-year">2022</p>
+          <p class="movie-summary">Secrets, trahisons et peur se mêlent dans une enquête haletante.</p>
+        </div>
+      </a>
+    </article>
+
+    <article class="movie-card">
+      <a href="scream.php">
+        <img src="scream.jpeg" alt="Affiche Scream">
+        <div class="movie-card-content">
+          <h3>Scream (2022)</h3>
+          <p class="movie-year">2022</p>
+          <p class="movie-summary">Une menace inattendue réveille de vieux souvenirs d’horreur.</p>
+        </div>
+      </a>
+    </article>
+
+    <article class="movie-card">
+      <a href="scream.php">
+        <img src="scream.jpeg" alt="Affiche Scream">
+        <div class="movie-card-content">
+          <h3>Scream (2022)</h3>
+          <p class="movie-year">2022</p>
+          <p class="movie-summary">Des indices sanglants et des visages familiers nourrissent la peur.</p>
+        </div>
+      </a>
+    </article>
+  </section>
+</main>
+
+<footer>
+</footer>
+
+</body>
+</html>
