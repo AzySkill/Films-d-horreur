@@ -1,10 +1,9 @@
-<!DOCTYPE html>
-<html lang="fr">
-<head>
-    <meta charset="UTF-8">
-    <title>Login</title>
-</head>
-<body>
+<?php
+require_once 'bootstrap.php';
+$title = 'Connexion - The Horror Vault';
+require_once 'header.php';
+?>
+<main>
     <h1>Connexion</h1>
     <?php
     if(isset($_GET['error'])){
@@ -26,5 +25,5 @@
 
         <button type="submit">Se connecter</button>
     </form>
-</body>
-</html>
+</main>
+<?php require_once 'footer.php'; ?>

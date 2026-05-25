@@ -1,3 +1,10 @@
+<?php
+session_start();
+if (!isset($_SESSION['is_connected'])) {
+    header('Location: login.php?error=notallowed');
+    exit;
+}
+?>
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -13,11 +20,11 @@
                 <div>Admin Panel</div>
             </div>
             <ul class="nav-list">
-                <li><a href="admin-dashboard.html"><span class="icon">🏠</span>Dashboard</a></li>
+                <li><a href="admin-dashboard.php"><span class="icon">🏠</span>Dashboard</a></li>
                 <li><a class="active" href="admin.php"><span class="icon">🎬</span>Films</a></li>
                 <li><a href="admin.php"><span class="icon">➕</span>Ajouter Film</a></li>
                 <li><a href="#"><span class="icon">⚙️</span>Paramètres</a></li>
-                <li><a href="accueil.html"><span class="icon">🏠</span>Retour au site</a></li>
+                <li><a href="accueil.php"><span class="icon">🏠</span>Retour au site</a></li>
             </ul>
         </aside>
 
@@ -27,7 +34,7 @@
                     <h1>Gestion des Films</h1>
                 </div>
                 <div class="user-actions">
-                    <button onclick="location.href='login.php'">Déconnexion</button>
+                    <button onclick="location.href='logout.php'">Déconnexion</button>
                 </div>
             </div>
 

@@ -12,7 +12,7 @@ if(
 ){
     session_start();
     $_SESSION['is_connected'] = $_POST['username'];
-    header('Location: admin-dashboard.html');
+    header('Location: admin-dashboard.php');
 }else{
     header('Location: login.php?error=1');
 }
