@@ -4,6 +4,19 @@ if (!isset($_SESSION['is_connected'])) {
     header('Location: login.php?error=notallowed');
     exit;
 }
+require_once 'database.php';
+
+$user_name = $_SESSION['user_name'] ?? 'Admin';
+$user_initial = $_SESSION['user_initial'] ?? 'A';
+
+// Récupérer les films
+$films = [];
+try {
+    $stmt = $pdo->query('SELECT * FROM item ORDER BY titre');
+    $films = $stmt->fetchAll(PDO::FETCH_ASSOC);
+} catch (PDOException $e) {
+    $films = [];
+}
 ?>
 <!DOCTYPE html>
 <html lang="fr">
@@ -17,14 +30,14 @@ if (!isset($_SESSION['is_connected'])) {
     <div class="container">
         <aside class="sidebar">
             <div class="brand">
-                <div class="logo">A</div>
-                <div>Admin Panel</div>
+                <div class="logo"><?= htmlspecialchars($user_initial) ?></div>
+                <div><?= htmlspecialchars($user_name) ?> Panel</div>
             </div>
             <ul class="nav-list">
                 <li><a class="active" href="admin-dashboard.php"><span class="icon">🏠</span>Dashboard</a></li>
                 <li><a href="admin.php"><span class="icon">🎬</span>Films</a></li>
                 <li><a href="admin.php"><span class="icon">➕</span>Ajouter Film</a></li>
-                <li><a href="#"><span class="icon">⚙️</span>Paramètres</a></li>
+                <li><a href="parametres.php"><span class="icon">⚙️</span>Paramètres</a></li>
                 <li><a href="accueil.php"><span class="icon">🏠</span>Retour au site</a></li>
             </ul>
         </aside>
@@ -32,7 +45,7 @@ if (!isset($_SESSION['is_connected'])) {
         <main class="main">
             <div class="topbar">
                 <div>
-                    <h1>Bienvenue, Admin</h1>
+                    <h1>Bienvenue, <?= htmlspecialchars($user_name) ?></h1>
                     <p style="margin: 6px 0 0; color: #9aa4b8;">Voici un aperçu rapide de vos films.</p>
                 </div>
                 <div class="user-actions">
@@ -58,7 +71,7 @@ if (!isset($_SESSION['is_connected'])) {
             <section class="panel">
                 <div class="panel-header">
                     <h2>Gestion des Films</h2>
-                    <button onclick="location.href='#'">Ajouter un Film</button>
+                    <button onclick="location.href='admin.php'">Ajouter un Film</button>
                 </div>
                 <div class="table-wrap">
                     <table class="table">
@@ -66,40 +79,41 @@ if (!isset($_SESSION['is_connected'])) {
                             <tr>
                                 <th>Titre</th>
                                 <th>Année</th>
+                                <th>Genre</th>
                                 <th>Actions</th>
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>
-                                <td>Scream 5</td>
-                                <td>2022</td>
-                                <td class="actions"><button class="button-blue">Modifier</button><button class="button-red">Supprimer</button></td>
-                            </tr>
-                            <tr>
-                                <td>World War Z  </td>
-                                <td>2013</td>
-                                <td class="actions"><button class="button-blue">Modifier</button><button class="button-red">Supprimer</button></td>
-                            </tr>
-                            <tr>
-                                <td>Slender Man  </td>
-                                <td>2018</td>
-                                <td class="actions"><button class="button-blue">Modifier</button><button class="button-red">Supprimer</button></td>
-                            </tr>
-                            <tr>
-                                <td>midsommar   </td>
-                                <td>2019</td>
-                                <td class="actions"><button class="button-blue">Modifier</button><button class="button-red">Supprimer</button></td>
-                            </tr>
-                            <tr>
-                                <td>it    </td>
-                                <td>2019</td>
-                                <td class="actions"><button class="button-blue">Modifier</button><button class="button-red">Supprimer</button></td>
-                            </tr>
+                            <?php if (count($films) > 0): ?>
+                                <?php foreach ($films as $film): ?>
+                                    <tr>
+                                        <td><?= htmlspecialchars($film['titre'], ENT_QUOTES, 'UTF-8') ?></td>
+                                        <td><?= htmlspecialchars($film['annee'] ?? 'N/A', ENT_QUOTES, 'UTF-8') ?></td>
+                                        <td><?= htmlspecialchars($film['genre'] ?? 'N/A', ENT_QUOTES, 'UTF-8') ?></td>
+                                        <td class="actions">
+                                            <button class="button-green" style="background: #28a745; color: #fff; border-radius: 10px;" onclick="location.href='film.php?id=<?= $film['id_item'] ?>'" >Voir</button>
+                                            <button class="button-blue" onclick="location.href='edit-film.php?id=<?= $film['id_item'] ?>'">Modifier</button>
+                                            <button class="button-red" onclick="confirmDelete(<?= $film['id_item'] ?>, '<?= htmlspecialchars($film['titre'], ENT_QUOTES, 'UTF-8') ?>')">Supprimer</button>
+                                        </td>
+                                    </tr>
+                                <?php endforeach; ?>
+                            <?php else: ?>
+                                <tr>
+                                    <td colspan="4">Aucun film trouvé</td>
+                                </tr>
+                            <?php endif; ?>
                         </tbody>
                     </table>
                 </div>
             </section>
         </main>
     </div>
+    <script>
+        function confirmDelete(id, titre) {
+            if (confirm('Êtes-vous sûr de vouloir supprimer le film "' + titre + '" ? Cette action est irréversible.')) {
+                location.href = 'delete-film.php?id=' + id;
+            }
+        }
+    </script>
 </body>
 </html>

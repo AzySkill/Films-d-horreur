@@ -215,7 +215,8 @@ body {
 }
 
 .button-blue,
-.button-red {
+.button-red,
+.button-green {
     border: none;
     border-radius: 10px;
     padding: 10px 14px;
@@ -228,11 +229,16 @@ body {
     background: #2b7bff;
 }
 
+.button-green {
+    background: #28a745;
+}
+
 .button-red {
     background: #ff4c4c;
 }
 
 .button-blue:hover,
+.button-green:hover,
 .button-red:hover,
 .topbar .user-actions button:hover,
 .panel-header button:hover {
