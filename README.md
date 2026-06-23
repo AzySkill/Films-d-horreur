@@ -67,9 +67,9 @@ Nom : Julien P.
 Âge : 35 ans
 Profession : Informaticien
 
-Objectif sur le site : Lire des informations et résumés sur des films cultes.
+Objectif sur le site : Lire des informations et résumés sur des films cultes, tout en participant à la gestion technique du site.
 
-Situation : Julien est un grand fan de films d’horreur classiques. Il aime consulter des sites de cinéma pour lire des résumés et se rappeler l’histoire de certains films.
+Situation : Julien est un grand fan de films d’horreur classiques. Il aime consulter le site pour retrouver l’histoire de ses films préférés et découvrir de nouvelles informations sur le cinéma. En tant qu’informaticien, il contribue aussi à la maintenance et à l’amélioration du site. Il veille à son bon fonctionnement et s’intéresse à l’expérience des utilisateurs..
 
 1.4 Identité du projet
 Valeurs du site
