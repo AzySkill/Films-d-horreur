@@ -1,12 +1,12 @@
 <?php
 
 $conn = mysqli_connect(
-    "localhost",
-    "root",
-    "",
-    "cineclub_horreur"
+    "sql107.infinityfree.com",
+    "if0_42259012",
+    "Your vPanel Password",
+    "if0_42259012_films_horreur"
 );
 
 if (!$conn) {
-    die("Erreur connexion");
+    die("Erreur connexion : " . mysqli_connect_error());
 }
